@@ -1,21 +1,22 @@
-const axios = require('axios');
-require('dotenv').config({ path: './cfg/.env' })
+// Import the necessary modules
+import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config({ path: './cfg/.env' });
 
-// Function to retrieve balances from an alephium public endpoint
-export const getAlephiumAddressBalance = async(address: string) : Promise<any> => {
-    let response = null;
-
-    return new Promise(async (resolve, reject) => {
-        try {
-            let alephiumUrl = `${process.env.ALEPHIUM_MAINNET_URL}/addresses/${address}/balance`;
-            let response = await axios.get(alephiumUrl);
-            resolve(response.data);
-        } catch (error) {
-            console.error(error);
-            reject(error);
-        }
-    });
+// Define the structure of the balance data returned by the API
+interface BalanceData {
+    balance: number;
+    lockedBalance: number;
 }
 
-module.exports = { getAlephiumAddressBalance };
-
+// Function to retrieve balances from an alephium public endpoint
+export const getAlephiumAddressBalance = async(address: string) : Promise<BalanceData> => {
+    try {
+        const alephiumUrl = `${process.env.ALEPHIUM_MAINNET_URL}/addresses/${address}/balance`;
+        const response = await axios.get(alephiumUrl);
+        return response.data as BalanceData;
+    } catch (error) {
+        console.error('Error fetching Alephium address balance:', error);
+        throw error;
+    }
+}

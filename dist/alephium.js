@@ -8,25 +8,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAlephiumAddressBalance = void 0;
-const axios = require('axios');
-require('dotenv').config({ path: './cfg/.env' });
+// Import the necessary modules
+const axios_1 = __importDefault(require("axios"));
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config({ path: './cfg/.env' });
 // Function to retrieve balances from an alephium public endpoint
 const getAlephiumAddressBalance = (address) => __awaiter(void 0, void 0, void 0, function* () {
-    let response = null;
-    return new Promise((resolve, reject) => __awaiter(void 0, void 0, void 0, function* () {
-        try {
-            let alephiumUrl = `${process.env.ALEPHIUM_MAINNET_URL}/addresses/${address}/balance`;
-            let response = yield axios.get(alephiumUrl);
-            resolve(response.data);
-        }
-        catch (error) {
-            console.error(error);
-            reject(error);
-        }
-    }));
+    try {
+        const alephiumUrl = `${process.env.ALEPHIUM_MAINNET_URL}/addresses/${address}/balance`;
+        const response = yield axios_1.default.get(alephiumUrl);
+        return response.data;
+    }
+    catch (error) {
+        console.error('Error fetching Alephium address balance:', error);
+        throw error;
+    }
 });
 exports.getAlephiumAddressBalance = getAlephiumAddressBalance;
-module.exports = { getAlephiumAddressBalance: exports.getAlephiumAddressBalance };
 //# sourceMappingURL=alephium.js.map
