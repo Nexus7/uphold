@@ -8,7 +8,7 @@
 ```
 npm i
 ```
-2. Build the project:
+3. Build the project:
 
 ```
 npm run build
