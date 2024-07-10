@@ -14,6 +14,20 @@ npm i
 npm run build
 ```
 
+4. Install the package as a global CLI tool:
+
+```
+npm i -g
+```
+
+5. Test that the CLI tool is available from another directory:
+
+```
+cd ..
+uphold -V
+```
+
+
 ## Usage
 
 ### 1. Checking blockchain balances

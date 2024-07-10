@@ -4,7 +4,7 @@
   "description": "Uphold - Coding Assignment",
   "main": "dist/index.js",
   "bin": {
-    "uh": "./dist/index.js"
+    "uphold": "./dist/index.js"
   },
   "scripts": {
     "build": "npx tsc",
