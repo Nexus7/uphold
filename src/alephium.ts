@@ -9,6 +9,7 @@ interface BalanceData {
     lockedBalance: number;
 }
 
+
 // Function to retrieve balances from an alephium public endpoint
 export const getAlephiumAddressBalance = async(address: string) : Promise<BalanceData> => {
     try {

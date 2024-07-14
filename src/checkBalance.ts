@@ -20,3 +20,4 @@ export const checkBalance = async (address: string, chain: string) => {
         console.log(chalk.red(`Chain ${chain} is not supported`));
     }
 }
+

@@ -3,7 +3,7 @@
 // Import the necessary modules
 import { Command } from "commander";
 import figlet from "figlet";
-import { checkBalance } from "./checkBalance.js";
+import { checkBalance } from "./checkBalance";
 
 const program = new Command();
 
