@@ -30,17 +30,17 @@ uphold -V
 
 ## Usage
 
-### 1. Checking blockchain balances
+### 1. Checking blockchain balances using the bash script
 <br/>
 
 Use the command:
 
 ```
-uphold check-balance <chain> <address>
+./check-alephium-balance.sh <address>
 ```
 
 Example of checking balance of account 19WzSnmNC1SQ6v7RpFFXhpcMcFSiwM4nKTSdbwgSJfSHy on the Alephium blockchain:
 
 ```
-uphold check-balance alephium 19WzSnmNC1SQ6v7RpFFXhpcMcFSiwM4nKTSdbwgSJfSHy
+./check-alephium-balance.sh  19WzSnmNC1SQ6v7RpFFXhpcMcFSiwM4nKTSdbwgSJfSHy
 ```
