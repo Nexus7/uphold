@@ -3,15 +3,7 @@
 // Import the necessary modules
 import { Command } from "commander";
 import figlet from "figlet";
-import chalk from "chalk";
-import { getAlephiumAddressBalance } from './alephium';
-
-
-// Define the structure of balance data returned by getAlephiumAddressBalance
-interface BalanceData {
-    balance: number;
-    lockedBalance: number;
-}
+import { checkBalance } from "./checkBalance.js";
 
 const program = new Command();
 
@@ -30,17 +22,8 @@ program
     .description('Check the balance of an address from a specified chain')
     .action(async (chain: string, address: string) => {
         try {
-            console.log(chalk.yellow(`Checking balance of ${address} on ${chain} chain`));
-            
-            // Add logic to check balance - Could be extended to other chains in future
-            if (chain === 'alephium') {
-                let balanceData: BalanceData = await getAlephiumAddressBalance(address);
-                let rawBalance = balanceData.balance / 1e18;
-                let rawLockedBalance = balanceData.lockedBalance / 1e18;
-                console.log(chalk.green(`Balance: ${rawBalance}, Locked Balance: ${rawLockedBalance}`));
-            } else {
-                console.log(chalk.red(`Chain ${chain} is not supported`));
-            }
+            let balanceResult = await checkBalance(address, chain);
+            console.log(`Balance of ${address} on ${chain} chain: ${balanceResult}`);
         } catch (error) {
             console.error("Error occurred!", error);
         }    
