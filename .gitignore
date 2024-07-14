@@ -1,2 +1,6 @@
+# Ignore build artifacts
 node_modules/
 dist/
+
+# Ignore logs
+*.log
