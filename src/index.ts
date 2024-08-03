@@ -22,8 +22,7 @@ program
     .description('Check the balance of an address from a specified chain')
     .action(async (chain: string, address: string) => {
         try {
-            let balanceResult = await checkBalance(address, chain);
-            console.log(`Balance of ${address} on ${chain} chain: ${balanceResult}`);
+            await checkBalance(address, chain);
         } catch (error) {
             console.error("Error occurred!", error);
         }    

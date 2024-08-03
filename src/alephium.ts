@@ -1,14 +1,9 @@
 // Import the necessary modules
 import axios from 'axios';
 import dotenv from 'dotenv';
+import { BalanceData } from './BalanceData';
+
 dotenv.config({ path: './cfg/.env' });
-
-// Define the structure of the balance data returned by the API
-interface BalanceData {
-    balance: number;
-    lockedBalance: number;
-}
-
 
 // Function to retrieve balances from an alephium public endpoint
 export const getAlephiumAddressBalance = async(address: string) : Promise<BalanceData> => {
